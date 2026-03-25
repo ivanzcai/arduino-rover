@@ -74,36 +74,36 @@ void setup() {
 
 void loop() {
 
-    int xVal = analogRead(A0);
-  int yVal = analogRead(A1);
-  byte btn = digitalRead(2);
+  //   int xVal = analogRead(A0);
+  // int yVal = analogRead(A1);
+  // byte btn = digitalRead(2);
 
-  // 1. Create a character buffer (max 32 bytes for NRF24)
-  char textOut[32];
+  // // 1. Create a character buffer (max 32 bytes for NRF24)
+  // char textOut[32];
 
-  // 2. Format the string: "X,Y,B" (e.g., "512,510,1")
-  sprintf(textOut, "%d,%d,%d", xVal, yVal, btn);
-  // const char message[] = "Hello Mega!";
+  // // 2. Format the string: "X,Y,B" (e.g., "512,510,1")
+  // sprintf(textOut, "%d,%d,%d", xVal, yVal, btn);
+  // // const char message[] = "Hello Mega!";
   
-  // // Send and wait for ACK payload automatically
-  // bool success = radio.write(&message, sizeof(message));
-  bool success = radio.write(&textOut, sizeof(textOut));
+  // // // Send and wait for ACK payload automatically
+  // // bool success = radio.write(&message, sizeof(message));
+  // bool success = radio.write(&textOut, sizeof(textOut));
 
-  if (success) {
-    Serial.print("Sent: ");
-    Serial.println(textOut);
+  // if (success) {
+  //   Serial.print("Sent: ");
+  //   Serial.println(textOut);
     
-    // Check if we got an ACK payload
-    if (radio.isAckPayloadAvailable()) {
-      radio.read(&replyBuffer, sizeof(replyBuffer));
-      Serial.print("Got ACK reply: ");
-      Serial.println(replyBuffer);
-    } else {
-      Serial.println("Sent OK (no ACK payload)");
-    }
-  } else {
-    Serial.println("Send failed - no ACK received");
-  }
+  //   // Check if we got an ACK payload
+  //   if (radio.isAckPayloadAvailable()) {
+  //     radio.read(&replyBuffer, sizeof(replyBuffer));
+  //     Serial.print("Got ACK reply: ");
+  //     Serial.println(replyBuffer);
+  //   } else {
+  //     Serial.println("Sent OK (no ACK payload)");
+  //   }
+  // } else {
+  //   Serial.println("Send failed - no ACK received");
+  // }
   
-  delay(200);
+  // delay(200);
 }
