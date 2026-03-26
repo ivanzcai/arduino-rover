@@ -105,5 +105,5 @@ void loop() {
     Serial.println("Send failed - no ACK received");
   }
   
-  delay(100);
+  delay(0);
 }
